@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 
 const app = require("./index");
 
-const DB_PASSWORD = "xoMxb14PePquC3h6";
-
-const DB = `mongodb+srv://sayantangarai2017:${DB_PASSWORD}@cluster0.kqmggvr.mongodb.net/?retryWrites=true&w=majority`;
+const DB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.kqmggvr.mongodb.net/?retryWrites=true&w=majority`;
 
 try {
   mongoose
