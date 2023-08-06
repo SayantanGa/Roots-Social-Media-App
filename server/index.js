@@ -14,7 +14,11 @@ app.use('process.env.SERVER_URL/api/v1/posts', postRouter);
 app.use('process.env.SERVER_URL/api/v1/users', userRouter);
 
 //const posts = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/posts.json`));
-app.use(cors());
+app.use(cors({
+    origin: 'https://roots-social-media-app-server.vercel.app',
+    methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
+    credentials: true
+}));
 app.options('*', cors());
 
 module.exports = app;
