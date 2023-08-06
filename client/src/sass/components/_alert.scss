@@ -1,0 +1,22 @@
+.alert {
+    --width: 30vw;
+    @include restructure {
+        --width: 40vw;
+    }
+    position: fixed;
+    top: -10vh;
+    left:calc(50vw - var(--width)/2);
+    height: 50px;
+    min-width: var(--width);
+    border-radius: 2rem;
+    background-color: rgba(157, 255, 0, 0.875);
+    z-index: 1000;
+    box-shadow: $shadow-box;
+    outline: 3px groove brown;
+    outline-offset: -5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: drop-from-top 4s 1;
+    animation-direction: forwards;
+}

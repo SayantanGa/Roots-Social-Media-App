@@ -1,0 +1,38 @@
+[
+  {
+    "postId": "idkbxkbc-fd88f-ffc",
+    "userName": "Commander_Anonymous",
+    "avatar": "user1.jpg",
+    "datetime": { "hr": 10, "min": 42, "date": 19, "month": 1, "year": 2023 },
+    "imgUrl": null,
+    "edited": true,
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis. Aliquam ultrices sagittis orci a. Venenatis cras sed felis eget velit aliquet sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis. Aliquam ultrices sagittis orci a. Venenatis cras sed felis eget velit aliquet sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis. Aliquam ultrices sagittis orci a. Venenatis cras sed felis eget velit aliquet sagittis.",
+    "likes": 0,
+    "dislikes": 0,
+    "comments": 0
+  },
+  {
+    "postId": "1",
+    "userName": "Captain_Anonymous",
+    "avatar": "user1.jpg",
+    "datetime": { "hr": 7, "min": 43, "date": 1, "month": 7, "year": 2023 },
+    "imgUrl": null,
+    "edited": false,
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis. Aliquam ultrices sagittis orci a. Venenatis cras sed felis eget velit aliquet sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis. Aliquam ultrices sagittis orci a. Venenatis cras sed felis eget velit aliquet sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis. Aliquam ultrices sagittis orci a. Venenatis cras sed felis eget velit aliquet sagittis.",
+    "likes": 10,
+    "dislikes": 2,
+    "comments": 5
+  },
+  {
+    "postId": "2",
+    "userName": "Captain_Anonymous",
+    "avatar": "user1.jpg",
+    "datetime": { "hr": 10, "min": 42, "date": 19, "month": 1, "year": 2023 },
+    "imgUrl": null,
+    "edited": true,
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis. Aliquam ultrices sagittis orci a. Venenatis cras sed felis eget velit aliquet sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis. Aliquam ultrices sagittis orci a. Venenatis cras sed felis eget velit aliquet sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus in mollis. Aliquam ultrices sagittis orci a. Venenatis cras sed felis eget velit aliquet sagittis.",
+    "likes": 15,
+    "dislikes": 5,
+    "comments": 9
+  }
+]

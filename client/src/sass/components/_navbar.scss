@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: $shadow-box;
+    z-index: 100;
+    background-image: linear-gradient(to top, $color-primary 40%, transparent);
+    backdrop-filter: blur(5px);
+
+    &__logo {
+        height: 35px;
+        width: 35px;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        list-style: none;
+    }
+
+    &__items {
+        width: 100%;
+    }
+
+    &__item {
+        
+
+    }
+
+    &__link {
+
+    }
+}

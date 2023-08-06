@@ -1,0 +1,57 @@
+.page-container {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background-image: var(--bgImg);
+    //linear-gradient(to top, rgba(black,.5), transparent), url('../public/bg-1.jpg'); //var(--bgImg);
+    background-size: cover;
+}
+
+.dashboard-container {
+    @include restructure {
+        flex-direction: column;
+    }
+}
+
+.login-container {
+
+    @include restructure {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}
+
+.knowledgearea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__quote {
+        color: $color-tertiary;
+        font-style: italic;
+    }
+
+    &__logo {
+        height: 25rem;
+    }
+}
+
+.bg-video {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    overflow: hidden;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0; 
+    &__content {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover; 
+    }
+}

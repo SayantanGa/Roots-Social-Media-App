@@ -1,0 +1,18 @@
+:root {
+    --bgImg: linear-gradient(to top, rgba(black,.5), transparent), url('../public/bg-1.jpg');
+}
+
+html {
+    @include mQ(tab-l) {
+        font-size: 80%;
+    }
+    @include mQ (tab-p) {
+        font-size: 65%;
+    }
+    @include mQ (phone) {
+        font-size: 45%;
+    }
+    @include mQ (big-d) {
+        font-size: 120%;
+    }
+}
