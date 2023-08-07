@@ -12,8 +12,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(`${process.env.SERVER_URL}/api/v1/posts`, postRouter);
-app.use(`${process.env.SERVER_URL}/api/v1/users`, userRouter);
+app.use(`/api/v1/posts`, postRouter);
+app.use(`/api/v1/users`, userRouter);
 
 //const posts = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/posts.json`));
 app.use(cors({
