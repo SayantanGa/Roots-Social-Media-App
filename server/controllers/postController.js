@@ -39,6 +39,8 @@ exports.getPost = async (req, res) => {
 
 exports.createPost = async (req, res) => {
   try {
+    const data = req.body;
+    data.userName = req.user.name;
     const newPost = await Post.create(req.body);
 
     res.status(201).json({
