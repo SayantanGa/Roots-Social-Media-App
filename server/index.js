@@ -4,12 +4,12 @@ const path = require('path');
 const postRouter = require("./routes/postRoutes");
 const userRouter = require("./routes/userRoutes");
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(`${process.env.SERVER_URL}/api/v1/posts`, postRouter);
