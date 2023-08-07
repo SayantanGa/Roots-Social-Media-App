@@ -51,7 +51,7 @@ function Logout(props) {
 
   const logout = () => {
     axios
-      .get(process.env.SERVER_URL + `/api/v1/users/logout`)
+      .get(`http://roots-social-media-app-api.onrender.com/api/v1/users/logout`)
       .then(function (response) {
         if (response.status === 200) {
           props.Alert("Logout successful");

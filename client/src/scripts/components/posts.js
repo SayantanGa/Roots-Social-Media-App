@@ -62,7 +62,7 @@ function PostStatLikings(props) {
 
   const handleLikeChange = async () => {
     try {
-      const res = await axios.post(process.env.SERVER_URL + `/api/v1/posts/${postId}/likings`, {
+      const res = await axios.post(`http://roots-social-media-app-api.onrender.com/api/v1/posts/${postId}/likings`, {
         val: 1,
       });
       if (res.status === 204) {
@@ -76,7 +76,7 @@ function PostStatLikings(props) {
 
   const handleDislikeChange = async () => {
     try {
-      const res = await axios.post(process.env.SERVER_URL + `/api/v1/posts/${postId}/likings`, {
+      const res = await axios.post(`http://roots-social-media-app-api.onrender.com/api/v1/posts/${postId}/likings`, {
         val: -1,
       });
       if (res.status === 204) {
@@ -91,7 +91,7 @@ function PostStatLikings(props) {
   //  useEffect(() => {
   props.isLoggedIn &&
     axios
-      .get(process.env.SERVER_URL + `/api/v1/posts/${postId}/likings/user`)
+      .get(`http://roots-social-media-app-api.onrender.com/api/v1/posts/${postId}/likings/user`)
       .then((res) => {
         console.log(res.data);
         if (res.data.data === 1) {
@@ -108,7 +108,7 @@ function PostStatLikings(props) {
 
   useEffect(() => {
     axios
-      .get(process.env.SERVER_URL + `/api/v1/posts/${postId}/likings`)
+      .get(`http://roots-social-media-app-api.onrender.com/api/v1/posts/${postId}/likings`)
       .then((res) => {
         setLikes(res.data.data[0]);
         setDislikes(res.data.data[1]);
@@ -290,7 +290,7 @@ export function PostCreator(props) {
   useEffect(() => {
     props.userName &&
       axios
-        .get(process.env.SERVER_URL + `/api/v1/users/${props.userName}`)
+        .get(`http://roots-social-media-app-api.onrender.com/api/v1/users/${props.userName}`)
         .then((res) => {
           setFullname(res.data.fullname);
         })
