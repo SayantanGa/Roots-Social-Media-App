@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require('cors');
+const path = require('path');
 const postRouter = require("./routes/postRoutes");
 const userRouter = require("./routes/userRoutes");
 const cookieParser = require('cookie-parser');
@@ -10,8 +11,9 @@ app.use(express.json());
 app.use(cookieParser());
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-app.use('process.env.SERVER_URL/api/v1/posts', postRouter);
-app.use('process.env.SERVER_URL/api/v1/users', userRouter);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(`${process.env.SERVER_URL}/api/v1/posts`, postRouter);
+app.use(`${process.env.SERVER_URL}/api/v1/users`, userRouter);
 
 //const posts = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/posts.json`));
 app.use(cors({

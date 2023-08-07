@@ -4,9 +4,9 @@ const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 
-JWT_SECRET='assignment-4-of-kshitij-web-wkshp';
-JWT_EXPIRES_IN = '14d';
-JWT_COOKIE_EXPIRES_IN = 14;
+JWT_SECRET=String(process.env.JWT_SECRET);
+JWT_EXPIRES_IN = String(process.env.JWT_EXPIRES_IN);
+JWT_COOKIE_EXPIRES_IN = Number(process.env.JWT_COOKIE_EXPIRES_IN);
 
 const signToken = id => {
   return jwt.sign({ id }, JWT_SECRET, {
