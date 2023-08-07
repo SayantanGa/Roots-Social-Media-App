@@ -10,8 +10,12 @@ const compression = require("compression");
 const app = express();
 app.enable("trust proxy");
 
-app.use(cors());
+var corsOptions = {
+    origin: 'https://roots-social-media-app.vercel.app',
+}
+app.use(cors(corsOptions));
 app.options("*", cors());
+
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(helmet());

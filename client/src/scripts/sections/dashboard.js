@@ -67,7 +67,7 @@ function Feed({ Alert, isLoggedIn }) {
     //setPosts((prevPosts) => [formData, ...prevPosts]);
     if (!editMode) {
       axios
-        .get("https://roots-social-media-app-api.onrender.com/api/v1/users")
+        .get("https://roots-social-media-app-api.onrender.com/api/v1/users", { withCredentials: true })
         .then(function (response) {
           axios
             .post(

@@ -51,6 +51,7 @@ function App() {
     axios
       .get("https://roots-social-media-app-api.onrender.com/api/v1/users")
       .then(function (response) {
+        console.log(response);
         if (response.status === 200) {
           setLoggedIn(true);
           window.localStorage.setItem(
