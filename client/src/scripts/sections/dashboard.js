@@ -55,7 +55,7 @@ function Feed({ Alert, isLoggedIn }) {
       .catch((err) => {
         Alert(`Error getting posts: ${err.message}`);
       });
-  }, [submittedData, editMode, posts]);
+  }, [submittedData]);
 
   const editPost = (postId) => {
     const post = posts.find((post) => post._id === postId);
