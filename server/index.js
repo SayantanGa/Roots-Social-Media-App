@@ -12,6 +12,7 @@ app.enable("trust proxy");
 
 var corsOptions = {
     origin: 'https://roots-social-media-app.vercel.app',
+    credentials: true,
 }
 app.use(cors(corsOptions));
 app.options("*", cors());
