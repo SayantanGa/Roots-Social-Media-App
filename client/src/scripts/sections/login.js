@@ -32,7 +32,7 @@ function FormArea({ Alert, onLogin }) {
     try {
       const res = await axios({
         method: "POST",
-        url: "/api/v1/users/login",
+        url:process.env.SERVER_URL +  "/api/v1/users/login",
         data: {
           email,
           password,
