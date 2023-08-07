@@ -46,12 +46,11 @@ function App() {
     setShowAlert(trigger);
     setDisplayMessage(message);
   };
-
+/*COMMENTED OUT DUE TO CORS ERROR
   useEffect(() => {
     axios
       .get("https://roots-social-media-app-api.onrender.com/api/v1/users", { withCredentials: true })
       .then(function (response) {
-        console.log(response);
         if (response.status === 200) {
           setLoggedIn(true);
           window.localStorage.setItem(
@@ -61,7 +60,7 @@ function App() {
         }
       });
   });
-
+*/
   return (
     <BrowserRouter>
       <Navbar

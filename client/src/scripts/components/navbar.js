@@ -56,6 +56,7 @@ function Logout(props) {
         if (response.status === 200) {
           props.Alert("Logout successful");
           props.setLoggedIn(false);
+          window.localStorage.removeItem("user");
         }
       })
       .catch(function (error) {

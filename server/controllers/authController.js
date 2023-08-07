@@ -152,11 +152,11 @@ exports.getCurrentUser = catchAsync(async (req, res, next) => {
     return res.status(200).json({
       status: "success",
       data: {
-        user: {
-          fullname: null,
-          name: null,
-          email: null,
-          _id: null,
+        user: { /*COOKIE REPLACEMENT*/
+          fullname: 'Captain Anonymous',
+          name: 'Captain_Anonymous',
+          email: 'cpa@example.com',
+          _id: "64c7f059f51deff88c7b4d6f",
         },
       },
     });

@@ -66,31 +66,30 @@ function Feed({ Alert, isLoggedIn }) {
   const sharePost = (formData) => {
     //setPosts((prevPosts) => [formData, ...prevPosts]);
     if (!editMode) {
+      /**COMMENTED OUT DUE TO CORS ERROR
       axios
         .get("https://roots-social-media-app-api.onrender.com/api/v1/users", { withCredentials: true })
         .then(function (response) {
-          axios
-            .post(
-              "https://roots-social-media-app-api.onrender.com/api/v1/posts",
-              {
-                userName: response.data.data.user.name,
-                content: formData.content,
-              }
-            )
-            .then(function (response) {
-              if (response.status === 201) {
-                Alert("Post Shared!");
-                setSubmittedData(template());
-              }
-            })
-            .catch(function (error) {
-              Alert(`${error.message}`);
-            });
+          */
+      axios
+        .post("https://roots-social-media-app-api.onrender.com/api/v1/posts", {
+          userName: /*response.data.data.user.name*/ "Captain_Anonymous",
+          content: formData.content,
+        })
+        .then(function (response) {
+          if (response.status === 201) {
+            Alert("Post Shared!");
+            setSubmittedData(template());
+          }
         })
         .catch(function (error) {
           Alert(`${error.message}`);
         });
-    } else {
+    } /*)
+        .catch(function (error) {
+          Alert(`${error.message}`);
+        });
+    }*/ else {
       axios
         .patch(
           `https://roots-social-media-app-api.onrender.com/api/v1/posts/${formData._id}`,
