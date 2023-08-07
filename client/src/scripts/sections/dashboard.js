@@ -70,10 +70,13 @@ function Feed({ Alert, isLoggedIn }) {
         .get("https://roots-social-media-app-api.onrender.com/api/v1/users")
         .then(function (response) {
           axios
-            .post("https://roots-social-media-app-api.onrender.com/api/v1/posts", {
-              userName: response.data.data.user.name,
-              content: formData.content,
-            })
+            .post(
+              "https://roots-social-media-app-api.onrender.com/api/v1/posts",
+              {
+                userName: response.data.data.user.name,
+                content: formData.content,
+              }
+            )
             .then(function (response) {
               if (response.status === 201) {
                 Alert("Post Shared!");
@@ -89,10 +92,13 @@ function Feed({ Alert, isLoggedIn }) {
         });
     } else {
       axios
-        .patch(`https://roots-social-media-app-api.onrender.com/api/v1/posts/${formData._id}`, {
-          content: formData.content,
-          edited: true,
-        })
+        .patch(
+          `https://roots-social-media-app-api.onrender.com/api/v1/posts/${formData._id}`,
+          {
+            content: formData.content,
+            edited: true,
+          }
+        )
         .then(function (response) {
           if (response.status === 200) {
             Alert("Post Edited");
@@ -108,7 +114,9 @@ function Feed({ Alert, isLoggedIn }) {
 
   function deletePost(postId) {
     axios
-      .delete(`https://roots-social-media-app-api.onrender.com/api/v1/posts/${postId}`)
+      .delete(
+        `https://roots-social-media-app-api.onrender.com/api/v1/posts/${postId}`
+      )
       .then(function (response) {
         console.log(response);
         if (response.status === 204) {

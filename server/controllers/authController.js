@@ -1,59 +1,64 @@
-const jwt = require('jsonwebtoken');
-const { promisify } = require('util');
-const User = require('./../models/userModel');
-const catchAsync = require('./../utils/catchAsync');
-const AppError = require('./../utils/appError');
+const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
+const User = require("./../models/userModel");
+const catchAsync = require("./../utils/catchAsync");
+const AppError = require("./../utils/appError");
 
-JWT_SECRET=String(process.env.JWT_SECRET);
+JWT_SECRET = String(process.env.JWT_SECRET);
 JWT_EXPIRES_IN = String(process.env.JWT_EXPIRES_IN);
 JWT_COOKIE_EXPIRES_IN = Number(process.env.JWT_COOKIE_EXPIRES_IN);
 
-const signToken = id => {
+const signToken = (id) => {
   return jwt.sign({ id }, JWT_SECRET, {
-    expiresIn: JWT_EXPIRES_IN
+    expiresIn: JWT_EXPIRES_IN,
   });
 };
 
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
   const cookieOptions = {
-    expires: new Date(
-      Date.now() + JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true
+    expires: new Date(Date.now() + JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
+    httpOnly: true,
   };
 
-  res.cookie('jwt', token, cookieOptions);
+  res.cookie("jwt", token, cookieOptions);
 
   user.password = undefined;
 
   res.status(statusCode).json({
-    status: 'success',
+    status: "success",
     token,
     data: {
-      user
-    }
+      user,
+    },
   });
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
-  if (!req.body.name || !req.body.email || !req.body.phone || !req.body.password) {
-    return next(new AppError('Please provide name, email, phone and password!', 400));
+  if (
+    !req.body.name ||
+    !req.body.email ||
+    !req.body.phone ||
+    !req.body.password
+  ) {
+    return next(
+      new AppError("Please provide name, email, phone and password!", 400)
+    );
   }
-  const {name, email, phone, password, fullname} = req.body;
+  const { name, email, phone, password, fullname } = req.body;
   const [emailExists, phoneExists, usernameExists] = await Promise.all([
     User.findOne({ email }),
     User.findOne({ phone }),
     User.findOne({ name }),
-  ])
+  ]);
   if (usernameExists) {
-    return next(new AppError('Please try with another username!', 400));
+    return next(new AppError("Please try with another username!", 400));
   }
   if (emailExists) {
-    return next(new AppError('Email already exists!', 400));
+    return next(new AppError("Email already exists!", 400));
   }
   if (phoneExists) {
-    return next(new AppError('Phone already exists!', 400));
+    return next(new AppError("Phone already exists!", 400));
   }
   const newUser = await User.create({
     fullname: fullname,
@@ -61,7 +66,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     email: email,
     phone: phone,
     password: password,
-    passwordConfirm: req.body.passwordConfirm
+    passwordConfirm: req.body.passwordConfirm,
   });
 
   createSendToken(newUser, 201, res);
@@ -72,13 +77,13 @@ exports.login = catchAsync(async (req, res, next) => {
 
   //Check if email and password exist
   if (!email || !password) {
-    return next(new AppError('Please provide email and password!', 400));
+    return next(new AppError("Please provide email and password!", 400));
   }
   //Check if user exists && password is correct
-  const user = await User.findOne({ email }).select('+password');
+  const user = await User.findOne({ email }).select("+password");
 
   if (!user || !(await user.correctPassword(password, user.password))) {
-    return next(new AppError('Incorrect email or password', 401));
+    return next(new AppError("Incorrect email or password", 401));
   }
 
   //If everything ok, send token to client
@@ -86,29 +91,28 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.logout = (req, res) => {
-  res.cookie('jwt', 'loggedout', {
+  res.cookie("jwt", "loggedout", {
     expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true
+    httpOnly: true,
   });
-  res.status(200).json({ status: 'success' });
+  res.status(200).json({ status: "success" });
 };
-
 
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check of it's there
   let token;
   if (
     req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
+    req.headers.authorization.startsWith("Bearer")
   ) {
-    token = req.headers.authorization.split(' ')[1];
+    token = req.headers.authorization.split(" ")[1];
   } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
 
   if (!token) {
     return next(
-      new AppError('You are not logged in! Please log in to get access.', 401)
+      new AppError("You are not logged in! Please log in to get access.", 401)
     );
   }
 
@@ -120,7 +124,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   if (!currentUser) {
     return next(
       new AppError(
-        'The user belonging to this token does no longer exist.',
+        "The user belonging to this token does no longer exist.",
         401
       )
     );
@@ -137,25 +141,25 @@ exports.getCurrentUser = catchAsync(async (req, res, next) => {
   let token;
   if (
     req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
+    req.headers.authorization.startsWith("Bearer")
   ) {
-    token = req.headers.authorization.split(' ')[1];
+    token = req.headers.authorization.split(" ")[1];
   } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
 
   if (!token) {
     return res.status(204).json({
-      status: 'success',
+      status: "success",
       data: {
-        user:{
-          fullname:null,
+        user: {
+          fullname: null,
           name: null,
           email: null,
-          _id: null
-        }
-      }
-    })
+          _id: null,
+        },
+      },
+    });
   }
 
   // 2) Verification token
@@ -166,7 +170,7 @@ exports.getCurrentUser = catchAsync(async (req, res, next) => {
   if (!currentUser) {
     return next(
       new AppError(
-        'The user belonging to this token does no longer exist.',
+        "The user belonging to this token does no longer exist.",
         401
       )
     );
@@ -174,9 +178,9 @@ exports.getCurrentUser = catchAsync(async (req, res, next) => {
 
   //RETURNING USER
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: {
-      user: currentUser
-    }
-  })
+      user: currentUser,
+    },
+  });
 });

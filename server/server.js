@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const app = require("./index");
 
-
 const DB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.kqmggvr.mongodb.net/?retryWrites=true&w=majority`;
 
 try {
@@ -23,4 +22,4 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log("Server is running on port " + port);
-})
+});

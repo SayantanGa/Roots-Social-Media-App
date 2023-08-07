@@ -48,15 +48,17 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get("https://roots-social-media-app-api.onrender.com/api/v1/users").then(function (response) {
-      if (response.status === 200) {
-        setLoggedIn(true);
-        window.localStorage.setItem(
-          "user",
-          JSON.stringify(response.data.data.user)
-        );
-      }
-    });
+    axios
+      .get("https://roots-social-media-app-api.onrender.com/api/v1/users")
+      .then(function (response) {
+        if (response.status === 200) {
+          setLoggedIn(true);
+          window.localStorage.setItem(
+            "user",
+            JSON.stringify(response.data.data.user)
+          );
+        }
+      });
   });
 
   return (
