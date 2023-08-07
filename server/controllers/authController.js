@@ -4,8 +4,8 @@ const User = require("./../models/userModel");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 
-JWT_SECRET = String(process.env.JWT_SECRET);
-JWT_EXPIRES_IN = String(process.env.JWT_EXPIRES_IN);
+JWT_SECRET = process.env.JWT_SECRET;
+JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN;
 JWT_COOKIE_EXPIRES_IN = Number(process.env.JWT_COOKIE_EXPIRES_IN);
 
 const signToken = (id) => {

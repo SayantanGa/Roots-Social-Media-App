@@ -73,7 +73,7 @@ function Feed({ Alert, isLoggedIn }) {
             .post(
               "https://roots-social-media-app-api.onrender.com/api/v1/posts",
               {
-                userName: '',
+                userName: response.data.data.user.name,
                 content: formData.content,
               }
             )
