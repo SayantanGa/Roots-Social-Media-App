@@ -99,6 +99,8 @@ exports.logout = (req, res) => {
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
+  /***********COMMENTED OUT DUE TO CORS ERROR********
+   * 
   // 1) Getting token and check of it's there
   let token;
   if (
@@ -129,6 +131,13 @@ exports.protect = catchAsync(async (req, res, next) => {
       )
     );
   }
+  */
+  currentUser = {
+    fullname: "Captain Anonymous",
+    name: "Captain_Anonymous",
+    email: "cpa@example.com",
+    _id: "64c7f059f51deff88c7b4d6f",
+  };
 
   // GRANT ACCESS TO PROTECTED ROUTE
   req.user = currentUser;
@@ -152,10 +161,10 @@ exports.getCurrentUser = catchAsync(async (req, res, next) => {
     return res.status(200).json({
       status: "success",
       data: {
-        user: { /*COOKIE REPLACEMENT*/
-          fullname: 'Captain Anonymous',
-          name: 'Captain_Anonymous',
-          email: 'cpa@example.com',
+        user: {
+          /*COOKIE REPLACEMENT*/ fullname: "Captain Anonymous",
+          name: "Captain_Anonymous",
+          email: "cpa@example.com",
           _id: "64c7f059f51deff88c7b4d6f",
         },
       },
