@@ -27,10 +27,14 @@ function FormArea({ Alert, onLogin }) {
   };
 
   const handleSubmit = (e) => {
-    if (data.password === data.confirmPassword) {
-      signup(data);
-    } else if (data.Password !== data.ConfirmPassword) {
+    if (data.Password !== data.ConfirmPassword) {
       Alert("Confirm Password and Password don't match");
+    } else if (data.Password.length < 8) {
+      Alert("Password must be at least 8 characters");
+    } else if (!usernameValid) {
+      Alert("Username already taken");
+    } else if (data.password === data.confirmPassword) {
+      signup(data);
     } else {
       Alert("Invalid details");
     }
@@ -60,7 +64,9 @@ function FormArea({ Alert, onLogin }) {
 
   useEffect(() => {
     axios
-      .post("https://roots-social-media-app-api.onrender.com/api/v1/users", { username: data.name })
+      .post("https://roots-social-media-app-api.onrender.com/api/v1/users", {
+        username: data.name,
+      })
       .then((res) => {
         if (res.status === 200) {
           setUsernameValid(true);
@@ -91,7 +97,19 @@ function FormArea({ Alert, onLogin }) {
           value={data.name}
           onChangeHandler={(e) => handleChange(e, "name")}
         />
-        {data.name && <span className="form__group" style={{fontSize: ".7rem", color:usernameValid ? "green" : "red"}}>{usernameValid ? "Username Available!" : "Username already taken..."}</span>}
+        {data.name && (
+          <span
+            className="form__group"
+            style={{
+              fontSize: ".7rem",
+              color: usernameValid ? "green" : "red",
+            }}
+          >
+            {usernameValid
+              ? "Username Available!"
+              : "Username already taken..."}
+          </span>
+        )}
         <GetInput
           type="email"
           name="Email"
