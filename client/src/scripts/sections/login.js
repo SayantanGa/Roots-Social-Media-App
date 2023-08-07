@@ -32,7 +32,7 @@ function FormArea({ Alert, onLogin }) {
     try {
       const res = await axios({
         method: "POST",
-        url:"http://roots-social-media-app-api.onrender.com/api/v1/users/login",
+        url:"https://roots-social-media-app-api.onrender.com/api/v1/users/login",
         data: {
           email,
           password,

@@ -42,7 +42,7 @@ function FormArea({ Alert, onLogin }) {
       delete userDataCopy.confirmPassword;
       const res = await axios({
         method: "POST",
-        url: "http://roots-social-media-app-api.onrender.com/api/v1/users/signup",
+        url: "https://roots-social-media-app-api.onrender.com/api/v1/users/signup",
         data: userDataCopy,
       });
 
@@ -60,7 +60,7 @@ function FormArea({ Alert, onLogin }) {
 
   useEffect(() => {
     axios
-      .post("http://roots-social-media-app-api.onrender.com/api/v1/users", { username: data.name })
+      .post("https://roots-social-media-app-api.onrender.com/api/v1/users", { username: data.name })
       .then((res) => {
         if (res.status === 200) {
           setUsernameValid(true);

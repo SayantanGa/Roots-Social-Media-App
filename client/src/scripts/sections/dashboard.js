@@ -48,7 +48,7 @@ function Feed({ Alert, isLoggedIn }) {
 
   useEffect(() => {
     axios
-      .get("http://roots-social-media-app-api.onrender.com/api/v1/posts")
+      .get("https://roots-social-media-app-api.onrender.com/api/v1/posts")
       .then((res) => {
         setPosts(res.data.data.posts.reverse());
       })
@@ -67,10 +67,10 @@ function Feed({ Alert, isLoggedIn }) {
     //setPosts((prevPosts) => [formData, ...prevPosts]);
     if (!editMode) {
       axios
-        .get("http://roots-social-media-app-api.onrender.com/api/v1/users")
+        .get("https://roots-social-media-app-api.onrender.com/api/v1/users")
         .then(function (response) {
           axios
-            .post("http://roots-social-media-app-api.onrender.com/api/v1/posts", {
+            .post("https://roots-social-media-app-api.onrender.com/api/v1/posts", {
               userName: response.data.data.user.name,
               content: formData.content,
             })
@@ -89,7 +89,7 @@ function Feed({ Alert, isLoggedIn }) {
         });
     } else {
       axios
-        .patch(`http://roots-social-media-app-api.onrender.com/api/v1/posts/${formData._id}`, {
+        .patch(`https://roots-social-media-app-api.onrender.com/api/v1/posts/${formData._id}`, {
           content: formData.content,
           edited: true,
         })
@@ -108,7 +108,7 @@ function Feed({ Alert, isLoggedIn }) {
 
   function deletePost(postId) {
     axios
-      .delete(`http://roots-social-media-app-api.onrender.com/api/v1/posts/${postId}`)
+      .delete(`https://roots-social-media-app-api.onrender.com/api/v1/posts/${postId}`)
       .then(function (response) {
         console.log(response);
         if (response.status === 204) {

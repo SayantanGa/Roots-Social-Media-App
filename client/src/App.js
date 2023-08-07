@@ -48,7 +48,7 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get("http://roots-social-media-app-api.onrender.com/api/v1/users").then(function (response) {
+    axios.get("https://roots-social-media-app-api.onrender.com/api/v1/users").then(function (response) {
       if (response.status === 200) {
         setLoggedIn(true);
         window.localStorage.setItem(
