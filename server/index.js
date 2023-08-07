@@ -17,11 +17,12 @@ app.use(`/api/v1/users`, userRouter);
 
 //const posts = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/posts.json`));
 app.use(cors({
-    origin: 'https://roots-social-media-app-api.onrender.com',
-    methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
-    credentials: true
+  origin: ['https://roots-social-media-app-api.onrender.com', 'https://roots-social-media-app.vercel.app'],
+  methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
+  credentials: true
 }));
 app.options('*', cors());
+
 
 module.exports = app;
 
